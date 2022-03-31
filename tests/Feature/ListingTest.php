@@ -130,6 +130,15 @@ class ListingTest extends TestCase
             ->call('create')
             ->assertstatus(200);
 
+        $listing = Listing::first();
+        $this->assertEquals($title, $listing->title);
+        $this->assertEquals($price, $listing->price);
+        $this->assertEquals($currency, $listing->currency);
+        $this->assertEquals($description, $listing->description);
+        $this->assertEquals($category->id, $listing->category_id);
+        $this->assertNotNull($listing->slug);
+        $this->assertNotNull($listing->date_online);
+
     }
 
     public function test_admin_can_view_all_listings()
