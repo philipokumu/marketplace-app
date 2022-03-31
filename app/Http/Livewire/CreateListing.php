@@ -16,11 +16,11 @@ class CreateListing extends Component
     public $category_id = '';
 
     protected $rules = [
-        'title' => '',
-        'price' => '',
-        'currency' => '',
-        'description' => '',
-        'category_id' => ''
+        'title' => 'required|unique:listings,title',
+        'price' => 'required|numeric',
+        'currency' => 'required',
+        'description' => 'required',
+        'category_id' => 'required|numeric'
     ];
 
     public function create()

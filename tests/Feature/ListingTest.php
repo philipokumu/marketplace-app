@@ -43,8 +43,8 @@ class ListingTest extends TestCase
                         'currency' => $listing->currency,
                         'category_id' => $listing->category_id,
                         'description' => $listing->description,
-                        'date_online' => $listing->date_online,
-                        'date_offline' => optional($listing->date_offline),
+                        'date_online' => $listing->date_online->toDateTimeString(),
+                        'date_offline' => optional($listing->date_offline)->toDateTimeString(),
                         ],
                 ],
             ]);
@@ -110,11 +110,9 @@ class ListingTest extends TestCase
     }
 
 
-    // Admin
+    /** Admin */
     public function test_admin_can_add_a_new_listing()
     {
-        $this->withoutExceptionHandling();
-
         $title = 'Chair';
         $price = 50.00;
         $currency = 'KES';
@@ -149,4 +147,75 @@ class ListingTest extends TestCase
         Livewire::test(AllListings::class)
             ->assertStatus(200);
     }
+
+    /** Validations */
+    public function test_all_fields_are_required_when_adding_new_listing()
+    {
+        $title = '';
+        $price = '';
+        $currency = '';
+        $description = '';
+        $category = '';
+
+        Livewire::test(CreateListing::class)
+            ->set('title', $title)
+            ->set('price', $price)
+            ->set('currency', $currency)
+            ->set('description', $description)
+            ->set('category_id', $category)
+            ->call('create')
+            ->assertHasErrors([
+                'title' => 'required',
+                'price' => 'required',
+                'description' => 'required',
+                'currency' => 'required',
+                'category_id' => 'required',
+            ]);
+    }
+
+
+    public function test_price_and_category_id_is_numeric_when_adding_new_listing()
+    {
+        $title = 'Chair';
+        $price = 'Fifty';
+        $currency = 'KES';
+        $description = 'A sturdy piece of furniture';
+        $category = 'One';
+
+        Livewire::test(CreateListing::class)
+            ->set('title', $title)
+            ->set('price', $price)
+            ->set('currency', $currency)
+            ->set('description', $description)
+            ->set('category_id', $category)
+            ->call('create')
+            ->assertHasErrors([
+                'price' => 'numeric',
+                'category_id' => 'numeric',
+            ]);
+    }
+
+    public function test_title_is_unique_when_adding_new_listing()
+    {
+        $title = 'Chair';
+        $price = 'Fifty';
+        $currency = 'KES';
+        $description = 'A sturdy piece of furniture';
+        $category = 'One';
+        
+        $category = Category::factory()->create();
+        Listing::factory()->create(['title'=>$title,'category_id'=>$category->id]);
+
+        Livewire::test(CreateListing::class)
+            ->set('title', $title)
+            ->set('price', $price)
+            ->set('currency', $currency)
+            ->set('description', $description)
+            ->set('category_id', $category)
+            ->call('create')
+            ->assertHasErrors([
+                'title' => 'unique',
+            ]);
+    }
+
 }
