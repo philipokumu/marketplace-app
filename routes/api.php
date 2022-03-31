@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::middleware('guest:sanctum')->group(function () {
+    Route::get('categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.list');
+    Route::get('categories/{category}', [App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
 });
