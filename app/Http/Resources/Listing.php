@@ -25,6 +25,8 @@ class Listing extends JsonResource
                     'currency' => $this->currency,
                     'category_id' => $this->category_id,
                     'description' => $this->description,
+                    'mobile' => $this->mobile,
+                    'email' => $this->email,
                     'date_online' => $this->date_online,
                     'date_offline' => $this->date_offline
                 ],

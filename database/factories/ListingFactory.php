@@ -21,6 +21,8 @@ class ListingFactory extends Factory
             'title' => $this->faker->name,
             'price' => 50.00,
             'currency' => 'KES',
+            'mobile' => '+254 720 123 456',
+            'email' => 'seller@example.com',
             'description' => $this->faker->text(100),
             'date_online' => Carbon::now()
         ];

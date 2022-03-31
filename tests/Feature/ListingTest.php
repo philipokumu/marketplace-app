@@ -28,6 +28,8 @@ class ListingTest extends TestCase
         $this->assertNotNull($listing->currency);
         $this->assertNotNull($listing->category_id);
         $this->assertNotNull($listing->description);
+        $this->assertNotNull($listing->mobile);
+        $this->assertNotNull($listing->email);
         $this->assertNotNull($listing->slug);
         $this->assertNotNull($listing->date_online);
 
@@ -43,6 +45,8 @@ class ListingTest extends TestCase
                         'currency' => $listing->currency,
                         'category_id' => $listing->category_id,
                         'description' => $listing->description,
+                        'mobile' => $listing->mobile,
+                        'email' => $listing->email,
                         'date_online' => $listing->date_online->toDateTimeString(),
                         'date_offline' => optional($listing->date_offline)->toDateTimeString(),
                         ],
@@ -117,6 +121,8 @@ class ListingTest extends TestCase
         $price = 50.00;
         $currency = 'KES';
         $description = 'A sturdy piece of furniture';
+        $mobile = '+254 720 123 456';
+        $email = 'seller@example.com';
         $category = Category::factory()->create();
 
         Livewire::test(CreateListing::class)
@@ -124,6 +130,8 @@ class ListingTest extends TestCase
             ->set('price', $price)
             ->set('currency', $currency)
             ->set('description', $description)
+            ->set('mobile', $mobile)
+            ->set('email', $email)
             ->set('category_id', $category->id)
             ->call('create')
             ->assertstatus(200);
@@ -135,6 +143,8 @@ class ListingTest extends TestCase
         $this->assertEquals($description, $listing->description);
         $this->assertEquals($category->id, $listing->category_id);
         $this->assertNotNull($listing->slug);
+        $this->assertNotNull($listing->mobile);
+        $this->assertNotNull($listing->email);
         $this->assertNotNull($listing->date_online);
 
     }
@@ -156,12 +166,16 @@ class ListingTest extends TestCase
         $currency = '';
         $description = '';
         $category = '';
+        $mobile = '';
+        $email = '';
 
         Livewire::test(CreateListing::class)
             ->set('title', $title)
             ->set('price', $price)
             ->set('currency', $currency)
             ->set('description', $description)
+            ->set('mobile', $mobile)
+            ->set('email', $email)
             ->set('category_id', $category)
             ->call('create')
             ->assertHasErrors([
@@ -170,6 +184,8 @@ class ListingTest extends TestCase
                 'description' => 'required',
                 'currency' => 'required',
                 'category_id' => 'required',
+                'mobile' => 'required',
+                'email' => 'required',
             ]);
     }
 
@@ -181,6 +197,8 @@ class ListingTest extends TestCase
         $currency = 'KES';
         $description = 'A sturdy piece of furniture';
         $category = 'One';
+        $mobile = '+254 720 123 456';
+        $email = 'seller@example.com';
 
         Livewire::test(CreateListing::class)
             ->set('title', $title)
@@ -188,6 +206,8 @@ class ListingTest extends TestCase
             ->set('currency', $currency)
             ->set('description', $description)
             ->set('category_id', $category)
+            ->set('mobile', $mobile)
+            ->set('email', $email)
             ->call('create')
             ->assertHasErrors([
                 'price' => 'numeric',
@@ -202,6 +222,8 @@ class ListingTest extends TestCase
         $currency = 'KES';
         $description = 'A sturdy piece of furniture';
         $category = 'One';
+        $mobile = '+254 720 123 456';
+        $email = 'seller@example.com';
         
         $category = Category::factory()->create();
         Listing::factory()->create(['title'=>$title,'category_id'=>$category->id]);
@@ -211,6 +233,8 @@ class ListingTest extends TestCase
             ->set('price', $price)
             ->set('currency', $currency)
             ->set('description', $description)
+            ->set('mobile', $mobile)
+            ->set('email', $email)
             ->set('category_id', $category)
             ->call('create')
             ->assertHasErrors([

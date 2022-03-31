@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('description');
             $table->string('currency');
+            $table->string('mobile');
+            $table->string('email');
             $table->dateTime('date_online');
             $table->dateTime('date_offline')->nullable();
             $table->timestamps();

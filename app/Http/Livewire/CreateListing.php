@@ -14,12 +14,16 @@ class CreateListing extends Component
     public $currency = '';
     public $description = '';
     public $category_id = '';
+    public $mobile = '';
+    public $email = '';
 
     protected $rules = [
         'title' => 'required|unique:listings,title',
         'price' => 'required|numeric',
         'currency' => 'required',
         'description' => 'required',
+        'mobile' => 'required',
+        'email' => 'required',
         'category_id' => 'required|numeric'
     ];
 
@@ -35,6 +39,8 @@ class CreateListing extends Component
             'description'=>$this->description,
             'category_id'=>$this->category_id,
             'currency'=>$this->currency,
+            'mobile'=>$this->mobile,
+            'email'=>$this->email,
             'date_online'=>Carbon::now(),
         ]);
 
