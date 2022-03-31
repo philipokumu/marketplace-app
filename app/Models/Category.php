@@ -10,4 +10,9 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
     use HasFactory, Sluggify;
+
+    public function listings()
+    {
+        return $this->hasMany(Listing::class);
+    }
 }
