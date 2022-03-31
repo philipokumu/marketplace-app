@@ -13,12 +13,11 @@ class CategoryTest extends TestCase
 
     public function test_user_can_view_a_category()
     {
-        $this->withoutExceptionHandling();
         $category = Category::factory()->create();
 
         $response = $this->get('/api/categories/'.$category->id);
 
-        $this->assertNotNull($category->name);
+        $this->assertNotNull($category->title);
         $this->assertNotNull($category->slug);
 
         $response->assertStatus(200)
@@ -27,7 +26,7 @@ class CategoryTest extends TestCase
                 'type'=>'categories',
                 'category_id'=>$category->id,
                 'attributes'=>[
-                    'name' => $category->name,
+                    'title' => $category->title,
                     'slug' => $category->slug
                     ],
             ],
@@ -36,7 +35,6 @@ class CategoryTest extends TestCase
 
     public function test_user_can_view_categories()
     {
-        $this->withoutExceptionHandling();
         $categories = Category::factory(2)->create();
 
         $response = $this->get('/api/categories');
@@ -49,7 +47,7 @@ class CategoryTest extends TestCase
                         'type' => 'categories',
                         'category_id' => $categories->first()->id,
                         'attributes' => [
-                            'name' => $categories->first()->name,
+                            'title' => $categories->first()->title,
                         ]
                     ]
                 ],
@@ -58,7 +56,7 @@ class CategoryTest extends TestCase
                         'type' => 'categories',
                         'category_id' => $categories->last()->id,
                         'attributes' => [
-                            'name' => $categories->last()->name,
+                            'title' => $categories->last()->title,
                         ]
                     ]
                 ]

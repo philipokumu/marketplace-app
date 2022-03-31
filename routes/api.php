@@ -21,4 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest:sanctum')->group(function () {
     Route::get('categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.list');
     Route::get('categories/{category}', [App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
+    Route::get('listings', [App\Http\Controllers\ListingController::class, 'index'])->name('listings.list');
+    Route::get('listings/{listing}', [App\Http\Controllers\ListingController::class, 'show'])->name('listings.show');
 });
