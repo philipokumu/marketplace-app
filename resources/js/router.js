@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "./pages/listings";
-import Example from "./components/ExampleComponent";
+import ListingShow from "./pages/listings/show";
 
 const routes = [
     {
@@ -10,19 +10,12 @@ const routes = [
         meta: { title: "home" },
     },
     {
-        path: "/example",
-        name: "example",
-        component: Example,
-        meta: { title: "example" },
+        path: "/listings/:listingId",
+        name: "listings.show",
+        component: ListingShow,
+        meta: { title: "Listing name" },
     },
-    // {
-    //     path: "/listings/:productId",
-    //     name: "listings.show",
-    //     component: ListingShow,
-    //     meta: { title: "Listing name" },
-    // },
 ];
-// });
 
 const router = createRouter({
     history: createWebHistory(),
