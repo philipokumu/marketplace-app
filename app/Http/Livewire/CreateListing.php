@@ -16,6 +16,8 @@ class CreateListing extends Component
     public $category_id = '';
     public $mobile = '';
     public $email = '';
+    public $categories = [];
+    public $success_response = false;
 
     protected $rules = [
         'title' => 'required|unique:listings,title',
@@ -26,6 +28,11 @@ class CreateListing extends Component
         'email' => 'required',
         'category_id' => 'required|numeric'
     ];
+
+    public function mount()
+    {
+        $this->categories = Category::all();
+    }
 
     public function create()
     {   
@@ -44,7 +51,15 @@ class CreateListing extends Component
             'date_online'=>Carbon::now(),
         ]);
 
-        // redirect(route('patients.edit',$patient));
+        $this->title = '';
+        $this->price = '';
+        $this->currency = '';
+        $this->description = '';
+        $this->category_id = '';
+        $this->mobile = '';
+        $this->email = '';
+
+        $this->success_response = true;
 
     }
 

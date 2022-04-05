@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/admin', function () {
-    return view('welcome');
+    return view('livewire');
 });
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])

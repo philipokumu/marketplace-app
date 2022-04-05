@@ -1,10 +1,6 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require("./bootstrap");
+
+import Alpine from "alpinejs";
 
 import { createApp } from "vue";
 import App from "./app.vue";
@@ -16,3 +12,7 @@ const app = createApp({});
 app.component("App", App);
 
 app.use(router).use(createPinia()).mount("#app");
+
+window.Alpine = Alpine;
+
+Alpine.start();
