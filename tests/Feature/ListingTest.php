@@ -17,10 +17,11 @@ class ListingTest extends TestCase
 
     public function test_user_can_view_a_listing()
     {
+        $this->withoutExceptionHandling();
         $category = Category::factory()->create();
         $listing = Listing::factory()->create(['category_id'=>$category->id]);
 
-        $response = $this->get('api/listings/'.$listing->id);
+        $response = $this->get('api/listings/'.$listing->slug);
 
         $this->assertNotNull($listing->title);
         $this->assertNotNull($listing->slug);

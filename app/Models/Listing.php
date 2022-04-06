@@ -11,4 +11,10 @@ class Listing extends Model
     use HasFactory, Sluggify;
 
     protected $guarded = [];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+        
+    }
 }
