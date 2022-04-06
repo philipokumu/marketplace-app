@@ -19,6 +19,18 @@
                                         type="text">
                                 @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
 
+                                <label class="block">
+                                    <span class="text-gray-700">Currency</span>
+                                </label>
+                                <select 
+                                    wire:model="currency"
+                                    class="block appearance-none w-full bg-gray-200 border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                    <option>-Select-</option>
+                                    <option value="KES">KES</option>
+                                    <option value="USD">USD</option>
+                                </select>
+                                @error('currency') <span class="text-red-500">{{ $message }}</span> @enderror
+
                                 <label class="block mb-0">
                                     <span class="text-gray-700">Price</span>
                                 </label>
@@ -59,18 +71,6 @@
                                     class="focus:shadow-none bg-gray-200 rounded-lg p-4 text-lg">
                                 </textarea>
                                 @error('description') <span class="text-red-500">{{ $message }}</span> @enderror
-                                
-                                <label class="block">
-                                    <span class="text-gray-700">Currency</span>
-                                </label>
-                                <select 
-                                    wire:model="currency"
-                                    class="block appearance-none w-full bg-gray-200 border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                    <option>-Select-</option>
-                                    <option value="KES">KES</option>
-                                    <option value="USD">USD</option>
-                                </select>
-                                @error('currency') <span class="text-red-500">{{ $message }}</span> @enderror
 
                                 <label class="block">
                                     <span class="text-gray-700">Category</span>

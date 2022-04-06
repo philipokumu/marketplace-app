@@ -3,7 +3,7 @@
         <div class="shadow overflow-hidden">
             <div class="banner w-full focus:outline-none">
                 <img
-                    :src="images[0]"
+                    :src="images[1]"
                     alt="Banner"
                     loading="lazy"
                     class="h-full w-full object-cover"
@@ -14,10 +14,8 @@
 </template>
 
 <script>
-// import Carousel from "../Widgets/Carousel.vue";
 export default {
-    name: "Header",
-    // components: { Carousel },
+    name: "Hero",
     data() {
         return {
             options: {

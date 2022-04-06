@@ -1,68 +1,50 @@
 <template>
-    <div>
-        <div v-if="listing" class="container mx-auto md:py-4 md:px-8">
-            <div
-                class="mb-4 md:grid grid-cols-2 gap-4 bg-white md:rounded-md shadow overflow-hidden"
-            >
-                <div class="mb-4 md:mb-0">
-                    <img src="#" alt="Image" />
-                    <!-- <product-view-slider
-            :images="product.data.attributes.productImages.data"
-          /> -->
-                </div>
-                <product-view-summary :listing="listing" />
+    <div v-if="isBusy" class="h-screen flex items-center justify-center">
+        <Spinner />
+    </div>
+    <div v-else class="container mx-auto md:py-4 md:px-8">
+        <div
+            class="mb-4 md:grid grid-cols-2 gap-4 bg-white md:rounded-md shadow overflow-hidden"
+        >
+            <div class="mb-4 md:mb-0" v-if="listing.attributes.image">
+                <img :src="listing.attributes.image" alt="Image" />
             </div>
-            <div class="mb-4">
-                <product-view-details :listing="listing" />
-            </div>
-            <!-- <div>
-                <similar-products-slider :listing="listing" />
-            </div> -->
+            <ListingViewSummary :listing="listing" />
+        </div>
+        <div class="mb-4">
+            <ListingViewDetails :listing="listing" />
         </div>
     </div>
 </template>
 
 <script>
-// import { mapGetters, mapActions } from "vuex";
-// import ProductViewSlider from "@/components/Sections/ProductViewSlider.vue";
-import ProductViewSummary from "../../components/Sections/ProductViewSummary.vue";
-import ProductViewDetails from "../../components/Sections/ProductViewDetails.vue";
-// import SimilarProductsSlider from "@/components/Sections/SimilarProductsSlider.vue";
+import ListingViewSummary from "../../components/Sections/ListingViewSummary.vue";
+import ListingViewDetails from "../../components/Sections/ListingViewDetails.vue";
+import Spinner from "../../components/Widgets/Spinner.vue";
+import { useRoute } from "vue-router";
+import { useListingStore } from "../../store/useListing";
+import { storeToRefs } from "pinia";
 
 export default {
-    data() {
-        return {
-            listing: {
-                id: 1,
-                slug: "product-1",
-                title: "Product 1",
-                image: "https://unsplash.com/photos/fZuleEfeA1Q",
-                price: 50,
-                currency: "KES",
-                description: "This is a great product",
-            },
-        };
-    },
     components: {
-        // ProductViewSlider,
-        ProductViewSummary,
-        ProductViewDetails,
-        // SimilarProductsSlider,
+        ListingViewSummary,
+        ListingViewDetails,
+        Spinner,
     },
-    computed: {
-        // ...mapGetters({
-        //     product: "products/product",
-        // }),
-    },
-    created() {
-        // this.closeMenu();
-        // this.getProduct(this.$route.params.slug);
-    },
-    methods: {
-        // ...mapActions({
-        //     closeMenu: "closeMenu",
-        //     getProduct: "products/view",
-        // }),
+    setup() {
+        const route = useRoute();
+        const store = useListingStore();
+
+        const listing_slug = route.params.listingId;
+
+        store.fetchListing(listing_slug);
+
+        const { listing, isBusy } = storeToRefs(store);
+
+        return {
+            listing,
+            isBusy,
+        };
     },
 };
 </script>

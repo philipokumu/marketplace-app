@@ -1,13 +1,15 @@
 <template>
-    <div class="container mx-auto md:px-8">
-        <Header />
-        <div>Product Listing</div>
+    <div v-if="isBusy" class="h-screen flex items-center justify-center">
+        <Spinner />
+    </div>
+    <div class="container mx-auto md:px-8" v-else>
+        <Hero />
         <div class="flex justify-center w-3/4 rounded-lg">
             <select
                 class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-black bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded-xl transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 aria-label="Default select example"
             >
-                <option selected>Open this select menu</option>
+                <option selected>- Filter by category -</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -27,55 +29,21 @@
 </template>
 
 <script>
-import Header from "../../components/Header.vue";
+import Hero from "../../components/Hero.vue";
+import Spinner from "../../components/Widgets/Spinner.vue";
 import ListingCard from "../../components/Cards/ListingCard.vue";
+import { useListingStore } from "../../store/useListing";
+import { storeToRefs } from "pinia";
+
 export default {
-    components: { Header, ListingCard },
-    data() {
-        return {
-            listings: [
-                {
-                    id: 1,
-                    slug: "product-1",
-                    title: "Product 1",
-                    image: "https://unsplash.com/photos/fZuleEfeA1Q",
-                    price: 50,
-                    currency: "KES",
-                },
-                {
-                    id: 2,
-                    slug: "product-2",
-                    title: "Product 2",
-                    image: "https://unsplash.com/photos/fZuleEfeA1Q",
-                    price: 50,
-                    currency: "KES",
-                },
-                {
-                    id: 3,
-                    slug: "product-3",
-                    title: "Product 3",
-                    image: "https://unsplash.com/photos/fZuleEfeA1Q",
-                    price: 50,
-                    currency: "KES",
-                },
-                {
-                    id: 4,
-                    slug: "product-4",
-                    title: "Product 4",
-                    image: "https://unsplash.com/photos/fZuleEfeA1Q",
-                    price: 50,
-                    currency: "KES",
-                },
-                {
-                    id: 5,
-                    slug: "product-5",
-                    title: "Product 5",
-                    image: "https://unsplash.com/photos/fZuleEfeA1Q",
-                    price: 50,
-                    currency: "KES",
-                },
-            ],
-        };
+    components: { Hero, ListingCard, Spinner },
+    setup() {
+        const store = useListingStore();
+        store.fetchListings();
+
+        const { listings, isBusy } = storeToRefs(store);
+
+        return { listings, isBusy };
     },
 };
 </script>
