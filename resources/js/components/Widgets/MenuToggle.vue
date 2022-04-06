@@ -10,23 +10,9 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex';
 import MenuIcon from "../Icons/MenuIcon.vue";
 
 export default {
     components: { MenuIcon },
-    methods: {
-        // ...mapActions({
-        //   toggle: 'toggleMenu',
-        //   close: 'closeMenu'
-        // }),
-        toggleMenu() {
-            // this.toggle();
-
-            window.onclick = () => {
-                // this.close();
-            };
-        },
-    },
 };
 </script>
