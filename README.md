@@ -49,6 +49,7 @@ php artisan serve
 
 -   Docker setup
 -   Authentication for admin end
+-   Listing pagination and caching to improve speed and scalability
 
 ## Notable features of the application
 
