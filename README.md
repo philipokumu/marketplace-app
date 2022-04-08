@@ -1,6 +1,6 @@
 ## About this Ecommerce application
 
-The application shows a light weight ecommerce application made with Laravel, Vue 3 and Livewire. The backend is managed by Laravel, customer frontend uses Vue Js and Admin backend uses Livewire.
+The application shows a light weight ecommerce application made with Laravel, Vue 3 and Livewire. The backend uses Laravel, customer frontend uses Vue Js and Admin backend uses Livewire.
 
 ## Setup
 
