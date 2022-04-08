@@ -23,15 +23,18 @@
 
 <script>
 import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import SearchIcon from "../Icons/SearchIcon.vue";
 
 export default {
     components: { SearchIcon },
-    setup(props, { emit }) {
+    setup() {
+        const router = useRouter();
+        const route = useRoute();
         let search_query = ref("");
 
         const searchedTitle = () => {
-            emit("searchedTitle", search_query.value);
+            router.push(`/listings?search_title=${search_query.value}`);
         };
         return {
             searchedTitle,
@@ -40,19 +43,5 @@ export default {
     },
 };
 
-// export default {
-//     name: "Searchbar",
-//     data() {
-//         return {
-//             search_query: this.$route.query.query,
-//         };
-//     },
-//     methods: {
-//         submitForm() {
-//             if (!this.query) return;
-//             this.$router.push(`/listings?query=${this.query}`);
-//         },
-//     },
-// };
-//
+// https://stackoverflow.com/questions/68030632/vue-3-composition-api-route-query-is-empty
 </script>

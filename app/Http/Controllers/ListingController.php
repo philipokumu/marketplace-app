@@ -15,8 +15,8 @@ class ListingController extends Controller
         $listings = Listing::query();
         
         // Search by listing title
-        if (request()->has('listing_title')) {
-            $search_term = request('listing_title');
+        if (request()->has('search_title')) {
+            $search_term = request('search_title');
             $listings->where('title', 'LIKE', "%{$search_term}%");
         }
 

@@ -94,7 +94,7 @@ class ListingTest extends TestCase
         Listing::factory()->create(['category_id'=>$category->id,'title'=>$search_term]);
         Listing::factory()->create(['category_id'=>$category->id]);
 
-        $response = $this->get("/api/listings?listing_title={$search_term}");
+        $response = $this->get("/api/listings?search_title={$search_term}");
 
         $response->assertStatus(200)
             ->assertJsonCount(1,'data')

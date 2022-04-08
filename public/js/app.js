@@ -25839,7 +25839,7 @@ __webpack_require__.r(__webpack_exports__);
       options: {
         autoplay: 3000
       },
-      images: ["https://morecustomersapp.com/wp-content/uploads/2020/08/banner-and-eCommerce.jpg", "http://bangaknitwear.com/assets/data/option14/Banga-knitwear-Home-Banner-4.jpg", "https://www.goingit.com.au/blog/wp-content/uploads/2015/11/amazing-banner-1200x565.jpg"]
+      images: ["https://secura.cloud/wp-content/uploads/TrafficPeaks_Header.jpg", "https://www.chatstack.com/blog/wp-content/uploads/2015/11/TopToolsOnlineStoreHeader.png", "https://morecustomersapp.com/wp-content/uploads/2020/08/banner-and-eCommerce.jpg", "http://bangaknitwear.com/assets/data/option14/Banga-knitwear-Home-Banner-4.jpg", "https://www.goingit.com.au/blog/wp-content/uploads/2015/11/amazing-banner-1200x565.jpg"]
     };
   }
 });
@@ -26057,8 +26057,9 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
     var store = (0,_store_useCategory__WEBPACK_IMPORTED_MODULE_1__.useCategoryStore)();
-    store.fetchCategories();
-    var selected_category = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    store.fetchCategories(); // let selected_category = "- Filter by Category -";
+
+    var selected_category = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("- Filter by Category -");
 
     var _storeToRefs = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.storeToRefs)(store),
         categories = _storeToRefs.categories,
@@ -26112,19 +26113,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _Icons_SearchIcon_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Icons/SearchIcon.vue */ "./resources/js/components/Icons/SearchIcon.vue");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     SearchIcon: _Icons_SearchIcon_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  setup: function setup(props, _ref) {
-    var emit = _ref.emit;
+  setup: function setup() {
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
+    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)();
     var search_query = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
 
     var searchedTitle = function searchedTitle() {
-      emit("searchedTitle", search_query.value);
+      router.push("/listings?search_title=".concat(search_query.value));
     };
 
     return {
@@ -26132,21 +26136,7 @@ __webpack_require__.r(__webpack_exports__);
       search_query: search_query
     };
   }
-}); // export default {
-//     name: "Searchbar",
-//     data() {
-//         return {
-//             search_query: this.$route.query.query,
-//         };
-//     },
-//     methods: {
-//         submitForm() {
-//             if (!this.query) return;
-//             this.$router.push(`/listings?query=${this.query}`);
-//         },
-//     },
-// };
-//
+}); // https://stackoverflow.com/questions/68030632/vue-3-composition-api-route-query-is-empty
 
 /***/ }),
 
@@ -26193,7 +26183,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Cards_ListingCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Cards/ListingCard.vue */ "./resources/js/components/Cards/ListingCard.vue");
 /* harmony import */ var _components_Widgets_CategorySelect_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Widgets/CategorySelect.vue */ "./resources/js/components/Widgets/CategorySelect.vue");
 /* harmony import */ var _store_useListing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/useListing */ "./resources/js/store/useListing.js");
-/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.esm-browser.js");
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.esm-browser.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
 
 
 
@@ -26208,17 +26202,27 @@ __webpack_require__.r(__webpack_exports__);
     Spinner: _components_Widgets_Spinner_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   setup: function setup() {
+    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)();
     var store = (0,_store_useListing__WEBPACK_IMPORTED_MODULE_4__.useListingStore)();
-    store.fetchListings();
+    var category = (0,vue__WEBPACK_IMPORTED_MODULE_5__.ref)(null); // Fetch all listings if no search query or if search query entered in browser url
 
-    var _storeToRefs = (0,pinia__WEBPACK_IMPORTED_MODULE_5__.storeToRefs)(store),
-        listings = _storeToRefs.listings,
-        isBusy = _storeToRefs.isBusy;
+    !route.query.search_title ? store.fetchListings() : store.fetchListings(route.query.search_title, category.value); // Fetch listings by category and if there is a search query
 
     var searchByCategoryId = function searchByCategoryId(selected_category) {
-      // console.log(selected_category, "Parent");
-      store.fetchListings(selected_category);
-    };
+      category.value = selected_category;
+      store.fetchListings(route.query.search_title, category.value);
+    }; // Fetch listings by search query and if there is a category
+
+
+    (0,vue__WEBPACK_IMPORTED_MODULE_5__.watch)(function () {
+      return route.query.search_title;
+    }, function (search_term) {
+      store.fetchListings(search_term, category.value);
+    });
+
+    var _storeToRefs = (0,pinia__WEBPACK_IMPORTED_MODULE_7__.storeToRefs)(store),
+        listings = _storeToRefs.listings,
+        isBusy = _storeToRefs.isBusy;
 
     return {
       listings: listings,
@@ -26493,15 +26497,16 @@ var _hoisted_1 = {
   "class": "shadow overflow-hidden"
 };
 var _hoisted_2 = {
-  "class": "banner w-full focus:outline-none"
+  "class": "banner w-full focus:outline-none bg-white"
 };
 var _hoisted_3 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: $data.images[1],
+    src: $data.images[0],
     alt: "Banner",
     loading: "lazy",
-    "class": "h-full w-full object-cover"
+    "class": "h-full w-full object-cover p-2",
+    height: "300px"
   }, null, 8
   /* PROPS */
   , _hoisted_3)])])]);
@@ -26926,34 +26931,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex justify-center w-3/4 rounded-lg"
+  "class": "flex justify-center w-full rounded-lg mt-2"
 };
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  selected: ""
-}, "- Filter by category -", -1
-/* HOISTED */
-);
-
-var _hoisted_3 = ["value"];
+var _hoisted_2 = ["value", "selected"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [!$setup.isBusy ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
     key: 0,
-    "class": "form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-black bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded-xl transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none",
-    "aria-label": "Default select example",
+    "class": "form-select appearance-none block w-full px-3 py-1.5 text-lg font-bold text-black bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded-xl transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.selected_category = $event;
     }),
     onChange: _cache[1] || (_cache[1] = function ($event) {
       return $setup.selectedCategory();
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" v-model=\"selected_category\" "), _hoisted_2, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.categories, function (category, index) {
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.categories, function (category, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
-      value: category.data.category_id
+      value: category.data.category_id,
+      selected: index === 0,
+      "class": "font-bold text-black text-lg"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.data.attributes.title), 9
     /* TEXT, PROPS */
-    , _hoisted_3);
+    , _hoisted_2);
   }), 128
   /* KEYED_FRAGMENT */
   ))], 544
@@ -27263,11 +27262,18 @@ var routes = [{
     title: "home"
   }
 }, {
+  path: "/listings",
+  name: "listings",
+  component: _pages_listings__WEBPACK_IMPORTED_MODULE_0__["default"],
+  meta: {
+    title: "listings"
+  }
+}, {
   path: "/listings/:listingId",
   name: "listings.show",
   component: _pages_listings_show__WEBPACK_IMPORTED_MODULE_1__["default"],
   meta: {
-    title: "Listing name"
+    title: "Listing"
   }
 }];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
@@ -27406,37 +27412,48 @@ var useListingStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)("mainLi
           _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var selected_category, category_filter_query, response;
+        var search_term, selected_category, query_string, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                selected_category = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : null;
-                category_filter_query = selected_category !== null ? "?category_id=".concat(selected_category) : ""; // console.log(category_filter_query);
+                search_term = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : null;
+                selected_category = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : null;
+                query_string = "";
+
+                if (selected_category !== null && search_term !== null) {
+                  query_string = "?search_title=".concat(search_term, "&category_id=").concat(selected_category);
+                } else if (search_term !== null) {
+                  query_string = "?search_title=".concat(search_term);
+                } else if (selected_category !== null) {
+                  query_string = "?category_id=".concat(selected_category);
+                } else {
+                  query_string = "";
+                }
 
                 _this.busy = true;
-                _context.prev = 3;
-                _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/listings".concat(category_filter_query));
+                _context.prev = 5;
+                _context.next = 8;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/listings".concat(query_string));
 
-              case 6:
+              case 8:
                 response = _context.sent;
                 _this.listings = response.data.data;
                 _this.busy = false;
-                _context.next = 14;
+                _context.next = 16;
                 break;
 
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](3);
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context["catch"](5);
                 console.log(_context.t0);
 
-              case 14:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 11]]);
+        }, _callee, null, [[5, 13]]);
       }))();
     },
     fetchListing: function fetchListing(slug) {
@@ -32522,7 +32539,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-7ebbb9e5] {\n  height: 50vh;\n}\n@media screen and (min-width: 768px) {\n.banner[data-v-7ebbb9e5] {\n    height: 70vh;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-7ebbb9e5] {\n  height: 30vh;\n}\n@media screen and (min-width: 768px) {\n.banner[data-v-7ebbb9e5] {\n    height: 40vh;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

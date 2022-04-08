@@ -10,10 +10,16 @@ const routes = [
         meta: { title: "home" },
     },
     {
+        path: "/listings",
+        name: "listings",
+        component: Home,
+        meta: { title: "listings" },
+    },
+    {
         path: "/listings/:listingId",
         name: "listings.show",
         component: ListingShow,
-        meta: { title: "Listing name" },
+        meta: { title: "Listing" },
     },
 ];
 
