@@ -18,7 +18,7 @@ class ListingFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name,
+            'title' => $this->faker->firstName(),
             'price' => 50.00,
             'currency' => 'KES',
             'mobile' => '+254 720 123 456',
