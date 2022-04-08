@@ -26057,8 +26057,7 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
     var store = (0,_store_useCategory__WEBPACK_IMPORTED_MODULE_1__.useCategoryStore)();
-    store.fetchCategories(); // let selected_category = "- Filter by Category -";
-
+    store.fetchCategories();
     var selected_category = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("- Filter by Category -");
 
     var _storeToRefs = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.storeToRefs)(store),
@@ -26933,7 +26932,15 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "flex justify-center w-full rounded-lg mt-2"
 };
-var _hoisted_2 = ["value", "selected"];
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  selected: "",
+  disabled: ""
+}, "- Filter by Category -", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = ["value", "selected"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [!$setup.isBusy ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
     key: 0,
@@ -26944,7 +26951,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[1] || (_cache[1] = function ($event) {
       return $setup.selectedCategory();
     })
-  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.categories, function (category, index) {
+  }, [_hoisted_2, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.categories, function (category, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: index,
       value: category.data.category_id,
@@ -26952,7 +26959,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "font-bold text-black text-lg"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.data.attributes.title), 9
     /* TEXT, PROPS */
-    , _hoisted_2);
+    , _hoisted_3);
   }), 128
   /* KEYED_FRAGMENT */
   ))], 544

@@ -6,6 +6,7 @@
             v-model="selected_category"
             @change="selectedCategory()"
         >
+            <option selected disabled>- Filter by Category -</option>
             <option
                 v-for="(category, index) in categories"
                 :key="index"
@@ -28,7 +29,6 @@ export default {
     setup(props, { emit }) {
         const store = useCategoryStore();
         store.fetchCategories();
-        // let selected_category = "- Filter by Category -";
         let selected_category = ref("- Filter by Category -");
 
         const { categories, isBusy } = storeToRefs(store);
