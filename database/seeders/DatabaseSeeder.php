@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        \App\Models\Category::factory(3)->create();
+        $furniture_category = \App\Models\Category::factory()->create(['title'=>'Furniture']);
+        $car_category = \App\Models\Category::factory()->create(['title'=>'Car']);
+        $electronics_category = \App\Models\Category::factory()->create(['title'=>'Electronics']);
+
+        \App\Models\Listing::factory(10)->create(['category_id'=>$furniture_category->id]);
+        \App\Models\Listing::factory(10)->create(['category_id'=>$car_category->id]);
+        \App\Models\Listing::factory(10)->create(['category_id'=>$electronics_category->id]);
     }
 }
