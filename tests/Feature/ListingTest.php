@@ -18,6 +18,7 @@ class ListingTest extends TestCase
     public function test_user_can_view_a_listing()
     {
         $this->withoutExceptionHandling();
+        
         $category = Category::factory()->create();
         $listing = Listing::factory()->create(['category_id'=>$category->id]);
 
@@ -45,6 +46,7 @@ class ListingTest extends TestCase
                         'price' => $listing->price,
                         'currency' => $listing->currency,
                         'category_id' => $listing->category_id,
+                        'category_title' => $listing->category->title,
                         'description' => $listing->description,
                         'mobile' => $listing->mobile,
                         'email' => $listing->email,

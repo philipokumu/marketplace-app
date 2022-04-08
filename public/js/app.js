@@ -26833,7 +26833,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["class"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <nuxt-link\r\n        v-if=\"product.attributes.product_video\"\r\n        to=\"?tab=video\"\r\n        class=\"py-3 px-6 whitespace-nowrap hover:text-primary-500 focus:text-primary-500 transition focus:outline-none\"\r\n        :class=\"{\r\n          'text-primary-500 border-b-2 border-primary-500': tab === 'video'\r\n        }\"\r\n      >\r\n        Video\r\n      </nuxt-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <nuxt-link\r\n        v-if=\"product.attributes.productReviews.data.length > 0\"\r\n        to=\"?tab=reviews\"\r\n        class=\"py-3 px-6 whitespace-nowrap hover:text-primary-500 focus:text-primary-500 transition focus:outline-none\"\r\n        :class=\"{\r\n          'text-primary-500 border-b-2 border-primary-500': tab === 'reviews'\r\n        }\"\r\n      >\r\n        Reviews\r\n      </nuxt-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <nuxt-link\r\n        v-if=\"$auth.loggedIn\"\r\n        to=\"?tab=review\"\r\n        class=\"py-3 px-6 whitespace-nowrap hover:text-primary-500 focus:text-primary-500 transition focus:outline-none\"\r\n        :class=\"{\r\n          'text-primary-500 border-b-2 border-primary-500': tab === 'review'\r\n        }\"\r\n      >\r\n        Write Review\r\n      </nuxt-link> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [$props.listing.attributes.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+  , ["class"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [$props.listing.attributes.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       hidden: $options.tab !== 'description'
@@ -26906,7 +26906,7 @@ var _hoisted_11 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.listing.attributes.title), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Category: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.listing.attributes.category_id), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Category: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.listing.attributes.category_title), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.listing.attributes.currency) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.listing.attributes.price), 1
   /* TEXT */

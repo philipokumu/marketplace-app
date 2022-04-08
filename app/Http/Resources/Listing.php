@@ -24,6 +24,7 @@ class Listing extends JsonResource
                     'price' => $this->price,
                     'currency' => $this->currency,
                     'category_id' => $this->category_id,
+                    'category_title' => $this->category->title,
                     'description' => $this->description,
                     'mobile' => $this->mobile,
                     'email' => $this->email,

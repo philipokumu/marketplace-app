@@ -6,7 +6,7 @@
                     {{ listing.attributes.title }}
                 </h1>
             </div>
-            <p>Category: {{ listing.attributes.category_id }}</p>
+            <p>Category: {{ listing.attributes.category_title }}</p>
         </div>
         <p class="text-3xl font-semibold">
             {{ listing.attributes.currency }}

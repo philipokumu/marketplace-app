@@ -23,36 +23,6 @@
             >
                 Contact details
             </router-link>
-            <!-- <nuxt-link
-        v-if="product.attributes.product_video"
-        to="?tab=video"
-        class="py-3 px-6 whitespace-nowrap hover:text-primary-500 focus:text-primary-500 transition focus:outline-none"
-        :class="{
-          'text-primary-500 border-b-2 border-primary-500': tab === 'video'
-        }"
-      >
-        Video
-      </nuxt-link> -->
-            <!-- <nuxt-link
-        v-if="product.attributes.productReviews.data.length > 0"
-        to="?tab=reviews"
-        class="py-3 px-6 whitespace-nowrap hover:text-primary-500 focus:text-primary-500 transition focus:outline-none"
-        :class="{
-          'text-primary-500 border-b-2 border-primary-500': tab === 'reviews'
-        }"
-      >
-        Reviews
-      </nuxt-link> -->
-            <!-- <nuxt-link
-        v-if="$auth.loggedIn"
-        to="?tab=review"
-        class="py-3 px-6 whitespace-nowrap hover:text-primary-500 focus:text-primary-500 transition focus:outline-none"
-        :class="{
-          'text-primary-500 border-b-2 border-primary-500': tab === 'review'
-        }"
-      >
-        Write Review
-      </nuxt-link> -->
         </div>
         <div class="py-3 px-6">
             <div

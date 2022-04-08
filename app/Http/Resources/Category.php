@@ -21,7 +21,6 @@ class Category extends JsonResource
                 'attributes' => [
                     'title' => $this->title,
                     'slug' => $this->slug,
-                    // 'listingDetails' => new ListingCollection($this->listings),
                 ],
             ],
         ];
