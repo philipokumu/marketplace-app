@@ -22,7 +22,7 @@ cd marketplace-app
 composer install
 ```
 
-3. Install frontemd dependencies
+3. Install frontend dependencies
 
 ```
 npm install
@@ -49,7 +49,7 @@ php artisan serve
 ```
 
 8. Access the site through the link provided by the above command. For example: http://127.0.0.1:8000
-9. Access the admin backend using: http://{your-host-name}/admin
+9. Access the admin backend using your local url e.g.: http://{your-host-name}/admin
 
 ## Points of improvement in the application
 
