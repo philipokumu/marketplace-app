@@ -150,15 +150,6 @@ class ListingTest extends TestCase
 
     }
 
-    public function test_admin_can_view_all_listings()
-    {
-        $category = Category::factory()->create();
-        $listings = Listing::factory(2)->create(['category_id'=>$category->id]);
-
-        Livewire::test(AllListings::class)
-            ->assertStatus(200);
-    }
-
     /** Validations */
     public function test_all_fields_are_required_when_adding_new_listing()
     {
