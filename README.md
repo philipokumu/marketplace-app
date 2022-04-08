@@ -16,34 +16,40 @@ git clone https://github.com/philipokumu/marketplace-app.git
 cd marketplace-app
 ```
 
-2. Install dependencies
+2. Install backend dependencies
 
 ```
 composer install
 ```
 
-3. Create a database for the project in your php localhost e.g. marketplace-app
+3. Install frontemd dependencies
+
+```
+npm install
+```
+
+4. Create a database for the project in your php localhost e.g. marketplace-app
 
 ```
 Copy .env.example to .env
 ```
 
-4. Open .env file and ensure to setup DB_DATABASE, DB_USERNAME and DB_PASSWORD for your database according to your environment
+5. Open .env file and ensure to setup DB_DATABASE, DB_USERNAME and DB_PASSWORD for your database according to your environment
 
-5. Migrate and seed the database
+6. Migrate and seed the database
 
 ```
 php artisan migrate --seed
 ```
 
-6. Start your server
+7. Start your server
 
 ```
 php artisan serve
 ```
 
-7. Access the site through the link provided by the above command. For example: http://127.0.0.1:8000
-8. Access the admin backend using: http://{your-host-name}/admin
+8. Access the site through the link provided by the above command. For example: http://127.0.0.1:8000
+9. Access the admin backend using: http://{your-host-name}/admin
 
 ## Points of improvement in the application
 
