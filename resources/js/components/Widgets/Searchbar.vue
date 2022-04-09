@@ -34,7 +34,9 @@ export default {
         let search_query = ref("");
 
         const searchedTitle = () => {
-            router.push(`/listings?search_title=${search_query.value}`);
+            if (search_query.value !== "") {
+                router.push(`/listings?search_title=${search_query.value}`);
+            }
         };
         return {
             searchedTitle,

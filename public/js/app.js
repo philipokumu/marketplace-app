@@ -26127,7 +26127,9 @@ __webpack_require__.r(__webpack_exports__);
     var search_query = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
 
     var searchedTitle = function searchedTitle() {
-      router.push("/listings?search_title=".concat(search_query.value));
+      if (search_query.value !== "") {
+        router.push("/listings?search_title=".concat(search_query.value));
+      }
     };
 
     return {
