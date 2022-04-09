@@ -36,10 +36,10 @@ Copy .env.example to .env
 
 5. Open .env file and ensure to setup the following according to your environment
 
+-   MIX_APP_URL
 -   DB_DATABASE
 -   DB_USERNAME
 -   DB_PASSWORD
--   MIX_APP_URL
 
 6. Migrate and seed the database
 
