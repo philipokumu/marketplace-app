@@ -15,7 +15,7 @@ export const useCategoryStore = defineStore("mainCategory", {
             this.busy = true;
             try {
                 const response = await axios.get(
-                    "http://127.0.0.1:8000/api/categories"
+                    `${process.env.MIX_APP_URL}/api/categories`
                 );
                 this.categories = response.data.data;
                 this.busy = false;

@@ -34,7 +34,12 @@ npm install
 Copy .env.example to .env
 ```
 
-5. Open .env file and ensure to setup DB_DATABASE, DB_USERNAME and DB_PASSWORD for your database according to your environment
+5. Open .env file and ensure to setup the following according to your environment
+
+-   DB_DATABASE
+-   DB_USERNAME
+-   DB_PASSWORD
+-   MIX_APP_URL
 
 6. Migrate and seed the database
 

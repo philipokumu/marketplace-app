@@ -1,5 +1,6 @@
 import axios from "axios";
 import { defineStore } from "pinia";
+import { env } from "process";
 
 export const useListingStore = defineStore("mainListing", {
     state: () => ({
@@ -28,7 +29,7 @@ export const useListingStore = defineStore("mainListing", {
             this.busy = true;
             try {
                 const response = await axios.get(
-                    `http://127.0.0.1:8000/api/listings${query_string}`
+                    `${process.env.MIX_APP_URL}/api/listings${query_string}`
                 );
                 this.listings = response.data.data;
                 this.busy = false;
@@ -40,7 +41,7 @@ export const useListingStore = defineStore("mainListing", {
             this.busy = true;
             try {
                 const response = await axios.get(
-                    `http://127.0.0.1:8000/api/listings/${slug}`
+                    `${process.env.MIX_APP_URL}/api/listings/${slug}`
                 );
                 this.listing = response.data.data;
                 this.busy = false;

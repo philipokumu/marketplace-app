@@ -6,7 +6,7 @@
             <Spinner />
         </div>
         <div
-            v-if="listings"
+            v-if="listings && listings.length > 0"
             class="md:p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4"
         >
             <ListingCard
@@ -14,6 +14,9 @@
                 :key="index"
                 :listing="listing"
             />
+        </div>
+        <div v-else class="m-16 font-semibold text-xl flex justify-center">
+            No content matches this query
         </div>
     </div>
 </template>

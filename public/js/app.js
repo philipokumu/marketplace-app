@@ -27096,6 +27096,10 @@ var _hoisted_3 = {
   key: 1,
   "class": "md:p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4"
 };
+var _hoisted_4 = {
+  key: 2,
+  "class": "m-16 font-semibold text-xl flex justify-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Hero = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Hero");
 
@@ -27109,7 +27113,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSelectedCategory: $setup.searchByCategoryId
   }, null, 8
   /* PROPS */
-  , ["onSelectedCategory"]), $setup.isBusy ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Spinner)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.listings ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.listings, function (listing, index) {
+  , ["onSelectedCategory"]), $setup.isBusy ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Spinner)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.listings && $setup.listings.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.listings, function (listing, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ListingCard, {
       key: index,
       listing: listing
@@ -27118,7 +27122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["listing"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, " No content matches this query "))]);
 }
 
 /***/ }),
@@ -27343,7 +27347,7 @@ var useCategoryStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)("mainC
                 _this.busy = true;
                 _context.prev = 1;
                 _context.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/categories");
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8000", "/api/categories"));
 
               case 4:
                 response = _context.sent;
@@ -27385,7 +27389,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.esm-browser.js");
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.esm-browser.js");
+/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! process */ "./node_modules/process/browser.js");
+/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -27394,7 +27400,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var useListingStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)("mainListing", {
+
+var useListingStore = (0,pinia__WEBPACK_IMPORTED_MODULE_3__.defineStore)("mainListing", {
   state: function state() {
     return {
       listings: [],
@@ -27441,7 +27448,7 @@ var useListingStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)("mainLi
                 _this.busy = true;
                 _context.prev = 5;
                 _context.next = 8;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/listings".concat(query_string));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8000", "/api/listings").concat(query_string));
 
               case 8:
                 response = _context.sent;
@@ -27475,7 +27482,7 @@ var useListingStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)("mainLi
                 _this2.busy = true;
                 _context2.prev = 1;
                 _context2.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/listings/".concat(slug));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8000", "/api/listings/").concat(slug));
 
               case 4:
                 response = _context2.sent;
