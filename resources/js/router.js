@@ -21,6 +21,12 @@ const routes = [
         component: ListingShow,
         meta: { title: "Listing" },
     },
+    {
+        path: "/:pathMatch(.*)*",
+        name: "home",
+        component: Home,
+        meta: { title: "home" },
+    },
 ];
 
 const router = createRouter({

@@ -27286,6 +27286,13 @@ var routes = [{
   meta: {
     title: "Listing"
   }
+}, {
+  path: "/:pathMatch(.*)*",
+  name: "home",
+  component: _pages_listings__WEBPACK_IMPORTED_MODULE_0__["default"],
+  meta: {
+    title: "home"
+  }
 }];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createWebHistory)(),
