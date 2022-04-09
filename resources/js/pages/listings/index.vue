@@ -2,11 +2,14 @@
     <div class="container mx-auto md:px-8">
         <Hero />
         <CategorySelect @selectedCategory="searchByCategoryId" />
-        <div v-if="isBusy" class="h-screen flex items-center justify-center">
+        <div
+            v-if="isBusy"
+            class="m-16 font-semibold text-xl flex justify-center"
+        >
             <Spinner />
         </div>
         <div
-            v-if="listings && listings.length > 0"
+            v-else-if="listings && listings.length > 0"
             class="md:p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4"
         >
             <ListingCard
