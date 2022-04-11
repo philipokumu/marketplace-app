@@ -27356,7 +27356,7 @@ var useCategoryStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)("mainC
                 _this.busy = true;
                 _context.prev = 1;
                 _context.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8000", "/api/categories"));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8084", "/api/categories"));
 
               case 4:
                 response = _context.sent;
@@ -27457,7 +27457,7 @@ var useListingStore = (0,pinia__WEBPACK_IMPORTED_MODULE_3__.defineStore)("mainLi
                 _this.busy = true;
                 _context.prev = 5;
                 _context.next = 8;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8000", "/api/listings").concat(query_string));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8084", "/api/listings").concat(query_string));
 
               case 8:
                 response = _context.sent;
@@ -27491,7 +27491,7 @@ var useListingStore = (0,pinia__WEBPACK_IMPORTED_MODULE_3__.defineStore)("mainLi
                 _this2.busy = true;
                 _context2.prev = 1;
                 _context2.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8000", "/api/listings/").concat(slug));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat("http://localhost:8084", "/api/listings/").concat(slug));
 
               case 4:
                 response = _context2.sent;
