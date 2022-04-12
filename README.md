@@ -29,45 +29,40 @@ cd marketplace-app
 composer install
 ```
 
-3. Install frontend dependencies
-
-```
-npm install
-```
-
-4. Create a database for the project in your php localhost e.g. marketplace-app
+3. Create a database for the project in your php localhost e.g. marketplace-app
 
 ```
 Copy .env.example to .env
 ```
 
-5. Open .env file and ensure to setup the following according to your environment
+4. Open .env file and ensure to setup the following according to your environment
 
 -   MIX_APP_URL
 -   DB_DATABASE
 -   DB_USERNAME
 -   DB_PASSWORD
+-   DB_HOST
 
-6. Generate application key
+5. Generate application key
 
 ```
 php artisan key:generate
 ```
 
-7. Migrate and seed the database
+6. Migrate and seed the database
 
 ```
 php artisan migrate --seed
 ```
 
-8. Start your server
+7. Start your server
 
 ```
 php artisan serve
 ```
 
-9. Access the site through the link provided by the above command. For example: http://127.0.0.1:8084
-10. Access the admin backend using your local url e.g.: http://{your-host-name}/admin
+8. Access the site through the link provided by the above command. For example: http://127.0.0.1:8084
+9. Access the admin backend using your local url e.g.: http://{your-host-name}/admin
 
 ### 2. Docker Setup
 
