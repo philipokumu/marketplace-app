@@ -69,16 +69,6 @@ php artisan serve
 9. Access the site through the link provided by the above command. For example: http://127.0.0.1:8084
 10. Access the admin backend using your local url e.g.: http://{your-host-name}/admin
 
-## Points of improvement in the application
-
--   Docker setup
--   Authentication for admin end
--   Listing pagination and caching to improve speed and scalability
-
-## Notable features of the application
-
--   All endpoints are created using the Test Driven Development approach
-
 ### 2. Docker Setup
 
 1. Run entrypoint file(Only for initial setup on your machine)
@@ -95,3 +85,12 @@ docker-compose -f docker-compose.yml up -d
 
 3. Customer end link: http://localhost:8084
 4. Admin end link: http://localhost:8084/admin
+
+## Points of improvement in the application
+
+-   Authentication for admin end
+-   Listing pagination and caching to improve speed and scalability
+
+## Notable features of the application
+
+-   All endpoints are created using the Test Driven Development approach
